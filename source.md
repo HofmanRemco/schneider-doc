@@ -69,7 +69,7 @@ We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen ma
 - Software: SoMachine
 - MAC: 00-80-F4-0B-24-E0
 - Server: Wind River 4.8
-- Standaard IP = 10.10.36.224 
+- Standaard IP = 10.10.36.224
 - De laatste 2 nummers van het IP zijn de decimale waarde van de laatste 2 hex bytes van het MAC-adres.
 
 ![Schneider protocol poorten](./assets/Schneider_protocol_poorten.png)
@@ -148,6 +148,7 @@ if __name__ == '__main__':
 ## Protocol ##
 
 ### Schneider Protocol ###
+
 #### Ping command ####
 
 ...
@@ -186,6 +187,7 @@ while True:
     if cur_relay >= max:
         cur_relay = min
 ```
+
 ## Decompile ##
 
 Matti
