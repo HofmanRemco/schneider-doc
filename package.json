@@ -1,0 +1,15 @@
+{
+  "name": "md-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Remco Hofman",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "markdown-pdf": "^9.0.0",
+    "markdown-toc": "^1.2.0"
+  }
+}
