@@ -130,18 +130,45 @@ if __name__ == '__main__':
 
 ## Protocol ##
 
-### Ping command ###
+### Schneider Protocol ###
+#### Ping command ####
 
 ...
 
-### Discovery protocol ###
+#### Discovery protocol ####
 
 ...
 
-### Start/stop command ###
+#### Start/stop command ####
 
 ...
 
+### modbus ###
+
+We found some weird behavior when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**.
+We wrote a script that flashes the output leds one by one.
+
+``` python
+from pymodbus.client.sync import ModbusTcpClient
+import time
+
+client = ModbusTcpClient('172.20.3.40')
+client.write_coil(1, True)
+wait = 0.2
+min = 4
+max = 16
+incr = 4
+cur_relay = min
+coil_amount=4
+while True:
+    client.write_coils(cur_relay, [True]*coil_amount)
+    time.sleep(wait)
+    client.write_coils(cur_relay, [False]*coil_amount)
+    time.sleep(wait)
+    cur_relay += incr
+    if cur_relay >= max:
+        cur_relay = min
+```
 ## Decompile ##
 
 Matti
