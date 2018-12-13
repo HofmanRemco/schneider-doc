@@ -22,7 +22,23 @@ Project door: Matti Bijnens, Remco Hofman, Stan van Wieringen
 
 ## Inhoudsopgave ##
 
-...
+<!-- toc -->
+
+- [Verklarende woordenlijst](#verklarende-woordenlijst)
+- [Intro](#intro)
+- [Verderzetting onderzoek vorig jaar](#verderzetting-onderzoek-vorig-jaar)
+- [Protocol](#protocol)
+  * [Ping command](#ping-command)
+  * [Discovery protocol](#discovery-protocol)
+  * [Start/stop command](#startstop-command)
+- [Decompile](#decompile)
+- [Action log](#action-log)
+- [Trello](#trello)
+- [Besluit](#besluit)
+- [Bronnen](#bronnen)
+- [Tools](#tools)
+
+<!-- tocstop -->
 
 ## Verklarende woordenlijst ##
 
