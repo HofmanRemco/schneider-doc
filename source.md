@@ -72,7 +72,7 @@ We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen ma
 - Standaard IP = 10.10.36.224 
 - De laatste 2 nummers van het IP zijn de decimale waarde van de laatste 2 hex bytes van het MAC-adres.
 
-![Schneider protocol poorten](./assets/Scnheider_protocol_poorten)
+![Schneider protocol poorten](./assets/Schneider_protocol_poorten.png)
 
 ## Verderzetting onderzoek vorig jaar ##
 
