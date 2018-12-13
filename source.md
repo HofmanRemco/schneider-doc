@@ -1,6 +1,6 @@
 # Schneider M241 #
 
-![Schneider M241](https://media.rs-online.com/t_large/R8066799-01.jpg)
+![Schneider Modicon M241](./assets/Modicon_M241.jpg)
 
 Project door: Matti Bijnens, Remco Hofman, Stan van Wieringen
 
@@ -50,12 +50,29 @@ Ook hebben wij met behulp van Wireshark de communicatie tussen de PLC en SoMachi
 
 | woord     | betekenis |
 | --------- | --------- |
-| PLC       |           |
+| PLC       | Een programmable logic controller is een elektronisch apparaat met een microprocessor. In de industrie worden machines over het algemeen hiermee aangestuurd. Daarom zijn ze een belangrijk onderdeel in de automatisering.|
 | SoMachine |           |
 
 ## Intro ##
 
-...
+Het ontwerpen en schrijven in Schneider's SoMachine software voor de besturing van industriële machines en installaties is goed en wel maar heeft dit security risico's? Deze beveiliging kan van levensbelang zijn. Als hackers bijvoorbeeld het stop-commando kunnen nabootsen, dan zou de werkvloer stilgelegd kunnen worden.
+
+Wij hebben de opdracht gekregen om onderzoek te doen op deze software waarmee de PLC geprogrammeerd wordt.
+We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen maanden dit zitten onderzoeken.
+
+## Technische details ##
+
+- Prijs: $823
+- Serie: Modicon M241
+- Type: TM241CE40R
+- Merk: Schneider Electric
+- Software: SoMachine
+- MAC: 00-80-F4-0B-24-E0
+- Server: Wind River 4.8
+- Standaard IP = 10.10.36.224 
+- De laatste 2 nummers van het IP zijn de decimale waarde van de laatste 2 hex bytes van het MAC-adres.
+
+![Schneider protocol poorten](./assets/Scnheider_protocol_poorten)
 
 ## Verderzetting onderzoek vorig jaar ##
 
