@@ -48,7 +48,6 @@ Ook hebben wij met behulp van Wireshark de communicatie tussen de PLC en SoMachi
   - modbus
 - Decompile
 - Action log
-- Trello
 - Besluit
 - Bronnen
 - Tools
@@ -178,10 +177,6 @@ Matti
 | datum | log |
 | ----- | --- |
 
-## Trello ##
-
-plz help
-
 ## Besluit ##
 
 ...
@@ -291,3 +286,7 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
+### Trello ###
+
+plz add snip
