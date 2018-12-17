@@ -63,10 +63,12 @@ Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en S
 
 ## Verklarende woordenlijst ##
 
-| woord     | betekenis |
-| --------- | --------- |
-| PLC       | Een programmable logic controller is een elektronisch apparaat met een microprocessor. In de industrie worden machines over het algemeen hiermee aangestuurd. Daarom zijn ze een belangrijk onderdeel in de automatisering.|
-| SoMachine |           |
+| woord         | betekenis |
+| ------------- | --------- |
+| PLC           | Een programmable logic controller is een elektronisch apparaat met een microprocessor. In de industrie worden machines over het algemeen hiermee aangestuurd. Daarom zijn ze een belangrijk onderdeel in de automatisering.|
+| SoMachine | |
+| Replay attack | Een replay-aanval (ook bekend als afspeelaanval) is een vorm van netwerkaanval waarbij een geldige gegevensoverdracht kwaadwillig of frauduleus wordt herhaald of vertraagd. |
+| Cross site scripting attack | |
 
 ## Intro ##
 
@@ -181,18 +183,18 @@ Hierdoor is het een hele opgave om tot de kern van een functie te komen.
 
 ## Action log ##
 
-| datum            | log |
-| ---------------- | --- |
-| 18 oktober 2018  | |
-| 25 oktober 2018  | |
-| 5 november 2018  | |
-| 6 november 2018  | |
-| 7 november 2018  | |
-| 8 november 2018  | |
-| 15 november 2018 | |
-| 22 november 2018 | |
-| 29 november 2018 | |
-| 06 december 2018 | |
+| datum            | log                                    |
+| ---------------- | -------------------------------------- |
+| 18 oktober 2018  | Alle benodigde software geïnstalleerd. |
+| 25 oktober 2018  | Licentie in orde gebracht en connectie gemaakt met de PLC. |
+| 5 november 2018  | Voormiddag software & firmware updates laten runnen. De al reeds gevonden vulnerabilities uitgetest op de webinterface van de PLC. Logs kunnen bekeken worden zonder authenticatie.|
+| 6 november 2018  | Met behulp van SoMachine een programma geschreven en op de PLC geflashed. (AtomBomb.proj, zie bijlage) |
+| 7 november 2018  | Met Wireshark zoveel mogelijk ping-commando UDP packets gecaptured. Gelukt om een replay attack uit te voeren door de ping-commando pakketjes na te bootsen en hierdoor oneindig de lampjes van de PLC te laten knipperen. |
+| 8 november 2018  | Onderzoek gedaan of het mogelijk is om het stop-commando te reverse engineeren. Gevonden dat de PLC enkel om de 9-10 seconden een antwoord verstuurd op een update-request broadcast. |
+| 15 november 2018 | In SoMachine vonden we een optie om het programma op de PLC te verwijderen. Ook deze UDP-pakketjes hebben we gecaptured en proberen te ontcijferen. |
+| 22 november 2018 | De hele dag proberen een replay attack te creëren van het stop-commando. |
+| 29 november 2018 | Gelukt om de lampjes aan te spreken via Modbus. Werkt enkel als de PLC in "stop-mode" staat, niet in "run-mode". |
+| 06 december 2018 | Op de web interface zagen we dat de configuratie-bestanden plain javascript zijn. Er dus een mogelijkheid tot een cross site scripting attack. |
 | 13 december 2018 | |
 | 17 december 2018 | |
 | 18 december 2018 | |
