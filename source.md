@@ -21,13 +21,15 @@ Voor ons security-project onderzoek kregen we de kans om met echte industriële 
 
 Graag danken wij onze lectoren voor het mogelijk maken van dit onderzoek en het ter beschikking stellen van de nodige apparatuur.
 
+Dit document is geschreven in markdown.
+
 Matti Bijnens, Remco Hofman, Stan van Wieringen
 
 ## Samenvatting ##
 
 We hebben onderzoek gedaan naar vulnerabilities in de Schneider Modicon M241 software. Alles wat te maken heeft met het flashen, programeren en commands sturen naar de PLC via de "SoMachine" software.
 
-Ook hebben wij met behulp van Wireshark de communicatie tussen de PLC en SoMachine onderschept en pogingen gedaan om het protocol te analyseren. We botsten tegen een muur toen we zagen dat we meerdere PLC's nodig hadden om hierin verder te geraken.
+Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en SoMachine onderschept en pogingen gedaan om het protocol te analyseren. We botsten tegen een muur toen we zagen dat we meerdere PLC's nodig hadden om hierin verder te geraken.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -61,10 +63,12 @@ Ook hebben wij met behulp van Wireshark de communicatie tussen de PLC en SoMachi
 
 ## Verklarende woordenlijst ##
 
-| woord     | betekenis |
-| --------- | --------- |
-| PLC       | Een programmable logic controller is een elektronisch apparaat met een microprocessor. In de industrie worden machines over het algemeen hiermee aangestuurd. Daarom zijn ze een belangrijk onderdeel in de automatisering.|
-| SoMachine |           |
+| woord         | betekenis |
+| ------------- | --------- |
+| PLC           | Een programmable logic controller is een elektronisch apparaat met een microprocessor. In de industrie worden machines over het algemeen hiermee aangestuurd. Daarom zijn ze een belangrijk onderdeel in de automatisering.|
+| SoMachine | |
+| Replay attack | Een replay-aanval (ook bekend als afspeelaanval) is een vorm van netwerkaanval waarbij een geldige gegevensoverdracht kwaadwillig of frauduleus wordt herhaald of vertraagd. |
+| Cross site scripting attack | |
 
 ## Intro ##
 
@@ -137,7 +141,11 @@ Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lect
 
 ### modbus ###
 
+<<<<<<< HEAD
 We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, the docs noted that the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget. 
+=======
+We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, we read in the docs the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget.
+>>>>>>> 4e128da5cc27c9873f60b796561bda236deabeb1
 Fortunately the device does support write_coils(15). We wrote a script that flashes the output leds one by one.
 
 ``` python
@@ -167,12 +175,12 @@ while True:
 
 ## Decompile ##
 
-We kwamen er al redelijk snel achter dat de SoMachine software suite in .NET geschreven was. 
+We kwamen er al redelijk snel achter dat de SoMachine software suite in .NET geschreven was.
 Dankzij DotPeek (JetBrains) konden we op een zeer overzichtelijke manier naar de source code kijken.
-
 
 ![DotPeek overview](./assets/dot_peek_overview.png)
 
+<<<<<<< HEAD
 Helaas wordt er constant naar andere DLL's gerefereerd in de code. 
 Hierdoor is het een hele opgave om tot de kern van een functie te komen. Een aantal van de DLL's hadden dezelfde filename als hun namespace. Hierdoor konden we ze makkelijk vinden op ons filesysteem. 
 
@@ -190,13 +198,33 @@ Nadien hebben we deze DLL's allemaal laten decompileren door DotPeek. Zoals te v
 
 Het navigeren door de code is wel veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. 
 
+=======
+Helaas worden er constant naar andere DLL's gerefereerd in de code.
+Hierdoor is het een hele opgave om tot de kern van een functie te komen.
+>>>>>>> 4e128da5cc27c9873f60b796561bda236deabeb1
 <!-- break -->
 <div style="page-break-after: always;"></div>
 
 ## Action log ##
 
-| datum | log |
-| ----- | --- |
+| datum            | log                                    |
+| ---------------- | -------------------------------------- |
+| 18 oktober 2018  | Alle benodigde software geïnstalleerd. |
+| 25 oktober 2018  | Licentie in orde gebracht en connectie gemaakt met de PLC. |
+| 5 november 2018  | Voormiddag software & firmware updates laten runnen. De al reeds gevonden vulnerabilities uitgetest op de webinterface van de PLC. Logs kunnen bekeken worden zonder authenticatie.|
+| 6 november 2018  | Met behulp van SoMachine een programma geschreven en op de PLC geflashed. (AtomBomb.proj, zie bijlage) |
+| 7 november 2018  | Met Wireshark zoveel mogelijk ping-commando UDP packets gecaptured. Gelukt om een replay attack uit te voeren door de ping-commando pakketjes na te bootsen en hierdoor oneindig de lampjes van de PLC te laten knipperen. |
+| 8 november 2018  | Onderzoek gedaan of het mogelijk is om het stop-commando te reverse engineeren. Gevonden dat de PLC enkel om de 9-10 seconden een antwoord verstuurd op een update-request broadcast. |
+| 15 november 2018 | In SoMachine vonden we een optie om het programma op de PLC te verwijderen. Ook deze UDP-pakketjes hebben we gecaptured en proberen te ontcijferen. |
+| 22 november 2018 | De hele dag proberen een replay attack te creëren van het stop-commando. |
+| 29 november 2018 | Gelukt om de lampjes aan te spreken via Modbus. Werkt enkel als de PLC in "stop-mode" staat, niet in "run-mode". |
+| 06 december 2018 | Op de web interface zagen we dat de configuratie-bestanden plain javascript zijn. Er dus een mogelijkheid tot een cross site scripting attack. |
+| 13 december 2018 | |
+| 17 december 2018 | |
+| 18 december 2018 | |
+| 19 december 2018 | |
+| 20 december 2018 | |
+| 21 december 2018 | |
 
 ## Besluit ##
 
