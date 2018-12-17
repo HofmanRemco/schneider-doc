@@ -178,6 +178,12 @@ plz help
 Word-document. Project S5: Industrial security 2017-18. Geraadpleegd op 18 oktober,
 *Niet publiek beschikbaar*
 
+PDF. Modicon M241 Logic Controller, Hardware Guide. Geraadpleegd op 25 oktober,  
+*[https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=EIO0000001456.07.pdf&p_Doc_Ref=EIO0000001456](https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=EIO0000001456.07.pdf&p_Doc_Ref=EIO0000001456)*
+
+PDF. Modicon M241 Logic Controller, Programming Guide. Geraadpleegd op 25 oktober,  
+*[https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=EIO0000001432.07.pdf&p_Doc_Ref=EIO0000001432](https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=EIO0000001432.07.pdf&p_Doc_Ref=EIO0000001432)*
+
 Webpagina. Logic Controller - Modicon M241. Geraadpleegd op 25 oktober,  
 *[https://www.schneider-electric.be/nl/product-range/62129-logic-controller---modicon-m241/](https://www.schneider-electric.be/nl/product-range/62129-logic-controller---modicon-m241/)*
 
