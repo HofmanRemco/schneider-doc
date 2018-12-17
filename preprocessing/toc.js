@@ -1,5 +1,8 @@
 const toc = require('markdown-toc');
 
 module.exports = function (string) {
-    return toc.insert(string)
+    const reg = /(\t)*[-,*,+] \[(.*)\]\(.*\)/g
+    const pattern = '$1- $2'
+    let intermediate = toc.insert(string);
+    return intermediate.replace(reg, pattern);
 };

