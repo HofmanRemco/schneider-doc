@@ -207,7 +207,29 @@ plz help
 
 ## Bronnen ##
 
-link bronnen hier
+Word-document. Project S5: Industrial security 2017-18. Geraadpleegd op 18 oktober,
+*Niet publiek beschikbaar*
+
+Webpagina. Logic Controller - Modicon M241. Geraadpleegd op 25 oktober,  
+*[https://www.schneider-electric.be/nl/product-range/62129-logic-controller---modicon-m241/](https://www.schneider-electric.be/nl/product-range/62129-logic-controller---modicon-m241/)*
+
+PDF. Schneider - Modbus for machines with Modicon logic controllers. Geraadpleegd op 5 november,  
+*[http://download.schneider-electric.com/files?p_enDocType=Catalog&p_File_Name=DIA3ED2160106EN.pdf&p_Doc_Ref=DIA3ED2160106EN](http://download.schneider-electric.com/files?p_enDocType=Catalog&p_File_Name=DIA3ED2160106EN.pdf&p_Doc_Ref=DIA3ED2160106EN)*
+
+PDF. Schneider - Ethernet for machines. Geraadpleegd op 5 november,  
+*[http://download.schneider-electric.com/files?p_enDocType=Catalog&p_File_Name=DIA3ED2160105EN.pdf&p_Doc_Ref=DIA3ED2160105EN](http://download.schneider-electric.com/files?p_enDocType=Catalog&p_File_Name=DIA3ED2160105EN.pdf&p_Doc_Ref=DIA3ED2160105EN)*
+
+Github. CookieCruncher. Geraadpleegd op 5 november,  
+*[https://github.com/DewitteNick/cookieCruncher](https://github.com/DewitteNick/cookieCruncher)*
+
+Github. CVE-2017-6026-SessionHijack. Geraadpleegd op 5 november,  
+*[https://github.com/tijldeneut/ICSSecurityScripts](https://github.com/tijldeneut/ICSSecurityScripts)*
+
+Webpagina. Scapy documentation. Geraadpleegd op 6 november,  
+*[https://scapy.readthedocs.io/en/latest/](https://scapy.readthedocs.io/en/latest/)*
+
+Webpagina. Ladder logic. Geraadpleegd op 6 november,  
+*[https://en.wikipedia.org/wiki/Ladder_logic](https://en.wikipedia.org/wiki/Ladder_logic)*
 
 ## Tools ##
 
