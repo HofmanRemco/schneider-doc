@@ -139,7 +139,7 @@ Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lect
 
 ### modbus ###
 
-We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, we read in the docs the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget. 
+We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, we read in the docs the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget.
 Fortunately the device does support write_coils(15). We wrote a script that flashes the output leds one by one.
 
 ``` python
@@ -169,13 +169,12 @@ while True:
 
 ## Decompile ##
 
-We kwamen er al redelijk snel achter dat de SoMachine software suite in .NET geschreven was. 
+We kwamen er al redelijk snel achter dat de SoMachine software suite in .NET geschreven was.
 Dankzij DotPeek (JetBrains) konden we op een zeer overzichtelijke manier naar de source code kijken.
-
 
 ![DotPeek overview](./assets/dot_peek_overview.png)
 
-Helaas worden er constant naar andere DLL's gerefereerd in de code. 
+Helaas worden er constant naar andere DLL's gerefereerd in de code.
 Hierdoor is het een hele opgave om tot de kern van een functie te komen.
 <!-- break -->
 <div style="page-break-after: always;"></div>
