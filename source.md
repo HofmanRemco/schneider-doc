@@ -21,13 +21,15 @@ Voor ons security-project onderzoek kregen we de kans om met echte industriële 
 
 Graag danken wij onze lectoren voor het mogelijk maken van dit onderzoek en het ter beschikking stellen van de nodige apparatuur.
 
+Dit document is geschreven in markdown.
+
 Matti Bijnens, Remco Hofman, Stan van Wieringen
 
 ## Samenvatting ##
 
 We hebben onderzoek gedaan naar vulnerabilities in de Schneider Modicon M241 software. Alles wat te maken heeft met het flashen, programeren en commands sturen naar de PLC via de "SoMachine" software.
 
-Ook hebben wij met behulp van Wireshark de communicatie tussen de PLC en SoMachine onderschept en pogingen gedaan om het protocol te analyseren. We botsten tegen een muur toen we zagen dat we meerdere PLC's nodig hadden om hierin verder te geraken.
+Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en SoMachine onderschept en pogingen gedaan om het protocol te analyseren. We botsten tegen een muur toen we zagen dat we meerdere PLC's nodig hadden om hierin verder te geraken.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -174,8 +176,24 @@ Matti
 
 ## Action log ##
 
-| datum | log |
-| ----- | --- |
+| datum            | log |
+| ---------------- | --- |
+| 18 oktober 2018  | |
+| 25 oktober 2018  | |
+| 5 november 2018  | |
+| 6 november 2018  | |
+| 7 november 2018  | |
+| 8 november 2018  | |
+| 15 november 2018 | |
+| 22 november 2018 | |
+| 29 november 2018 | |
+| 06 december 2018 | |
+| 13 december 2018 | |
+| 17 december 2018 | |
+| 18 december 2018 | |
+| 19 december 2018 | |
+| 20 december 2018 | |
+| 21 december 2018 | |
 
 ## Besluit ##
 
