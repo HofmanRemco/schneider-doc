@@ -168,8 +168,14 @@ while True:
 
 ## Decompile ##
 
-Matti
+We kwamen er al redelijk snel achter dat de SoMachine software suite in .NET geschreven was. 
+Dankzij DotPeek (JetBrains) konden we op een zeer overzichtelijke manier naar de source code kijken.
 
+
+![DotPeek overview](./assets/dot_peek_overview.png)
+
+Helaas worden er constant naar andere DLL's gerefereerd in de code. 
+Hierdoor is het een hele opgave om tot de kern van een functie te komen.
 <!-- break -->
 <div style="page-break-after: always;"></div>
 
