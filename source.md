@@ -141,11 +141,7 @@ Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lect
 
 ### modbus ###
 
-<<<<<<< HEAD
 We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, the docs noted that the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget. 
-=======
-We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, we read in the docs the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget.
->>>>>>> 4e128da5cc27c9873f60b796561bda236deabeb1
 Fortunately the device does support write_coils(15). We wrote a script that flashes the output leds one by one.
 
 ``` python
@@ -180,7 +176,6 @@ Dankzij DotPeek (JetBrains) konden we op een zeer overzichtelijke manier naar de
 
 ![DotPeek overview](./assets/dot_peek_overview.png)
 
-<<<<<<< HEAD
 Helaas wordt er constant naar andere DLL's gerefereerd in de code. 
 Hierdoor is het een hele opgave om tot de kern van een functie te komen. Een aantal van de DLL's hadden dezelfde filename als hun namespace. Hierdoor konden we ze makkelijk vinden op ons filesysteem. 
 
@@ -198,10 +193,6 @@ Nadien hebben we deze DLL's allemaal laten decompileren door DotPeek. Zoals te v
 
 Het navigeren door de code is wel veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. 
 
-=======
-Helaas worden er constant naar andere DLL's gerefereerd in de code.
-Hierdoor is het een hele opgave om tot de kern van een functie te komen.
->>>>>>> 4e128da5cc27c9873f60b796561bda236deabeb1
 <!-- break -->
 <div style="page-break-after: always;"></div>
 
