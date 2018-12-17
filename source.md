@@ -138,8 +138,8 @@ Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lect
 
 ### modbus ###
 
-We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**.
-We wrote a script that flashes the output leds one by one.
+We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, we read in the docs the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget. 
+Fortunately the device does support write_coils(15). We wrote a script that flashes the output leds one by one.
 
 ``` python
 from pymodbus.client.sync import ModbusTcpClient
