@@ -137,7 +137,7 @@ Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lect
 
 ### modbus ###
 
-We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, we read in the docs the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget. 
+We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, the docs noted that the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget. 
 Fortunately the device does support write_coils(15). We wrote a script that flashes the output leds one by one.
 
 ``` python
@@ -173,8 +173,23 @@ Dankzij DotPeek (JetBrains) konden we op een zeer overzichtelijke manier naar de
 
 ![DotPeek overview](./assets/dot_peek_overview.png)
 
-Helaas worden er constant naar andere DLL's gerefereerd in de code. 
-Hierdoor is het een hele opgave om tot de kern van een functie te komen.
+Helaas wordt er constant naar andere DLL's gerefereerd in de code. 
+Hierdoor is het een hele opgave om tot de kern van een functie te komen. Een aantal van de DLL's hadden dezelfde filename als hun namespace. Hierdoor konden we ze makkelijk vinden op ons filesysteem. 
+
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
+Eens een DLL is ingeladen en volledig gedcompileerd is, kon je doormiddel van een CTRL + Click steeds verdergaan in de code. Totdat je weer op een niet-ingeladen DLL stuit. Om dit probleem te verhelpen hebben we doormiddel van een script alle DLL's verzameld in 1 enkele map. 
+
+``` bash
+find . -name '*.dll' -exec cp {} /home/matti/dlls \;
+```
+Nadien hebben we deze DLL's allemaal laten decompileren door DotPeek. Zoals te verwachten nam dit veel tijd in beslag.
+
+![Decompiled DLL List](./assets/dll_decompiled_list.png)
+
+Het navigeren door de code is wel veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. 
+
 <!-- break -->
 <div style="page-break-after: always;"></div>
 
