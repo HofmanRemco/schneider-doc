@@ -38,6 +38,7 @@ Ook hebben wij met behulp van Wireshark de communicatie tussen de PLC en SoMachi
 
 - Verklarende woordenlijst
 - Intro
+- Technische details
 - Verderzetting onderzoek vorig jaar
 - Protocol
   - Schneider Protocol
@@ -87,6 +88,9 @@ We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen ma
 
 ![Schneider protocol poorten](./assets/Schneider_protocol_poorten.png)
 
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
 ## Verderzetting onderzoek vorig jaar ##
 
 Vorig jaar werd een fout gevonden in de generatie van de sessiecookie.
@@ -112,6 +116,9 @@ $(wget -qO- ${1}/usr/Syslog/PlcLog.txt\
 Als uitbreiding schreven we ook een Python script om cross-platform te werken. U kan deze code vinden in de bijlagen, gezien de grotere omvang van deze file. Uiteraard is ze ook beschikbaar via github.
 
 Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lector, Tijl Deneut, uiteindelijk gepubliceerd. Ook zijn exploit maakt gebruik van de publiek leesbare logfiles om de sessiecookie te berekenen.
+
+<!-- break -->
+<div style="page-break-after: always;"></div>
 
 ## Protocol ##
 
@@ -156,9 +163,15 @@ while True:
         cur_relay = min
 ```
 
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
 ## Decompile ##
 
 Matti
+
+<!-- break -->
+<div style="page-break-after: always;"></div>
 
 ## Action log ##
 
@@ -173,9 +186,12 @@ plz help
 
 ...
 
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
 ## Bronnen ##
 
-Word-document. Project S5: Industrial security 2017-18. Geraadpleegd op 18 oktober,
+Word-document. Project S5: Industrial security 2017-18. Geraadpleegd op 18 oktober,  
 *Niet publiek beschikbaar*
 
 PDF. Modicon M241 Logic Controller, Hardware Guide. Geraadpleegd op 25 oktober,  
@@ -205,9 +221,15 @@ Webpagina. Scapy documentation. Geraadpleegd op 6 november,
 Webpagina. Ladder logic. Geraadpleegd op 6 november,  
 *[https://en.wikipedia.org/wiki/Ladder_logic](https://en.wikipedia.org/wiki/Ladder_logic)*
 
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
 ## Tools ##
 
 link tools hier
+
+<!-- break -->
+<div style="page-break-after: always;"></div>
 
 ## Bijlagen ##
 
