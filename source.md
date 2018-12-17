@@ -226,7 +226,14 @@ Webpagina. Ladder logic. Geraadpleegd op 6 november,
 
 ## Tools ##
 
-link tools hier
+SoMachine
+> SoMachine is software dat wordt gebruikt om de meeste Schneider-controllers te programmeren.
+
+SNMP Bulkwalk
+> snmpbulkwalk is een SNMP-toepassing die SNMP GETBULK-verzoeken gebruikt om efficiënt een netwerkentiteit voor een informatiestamboom te ondervragen.
+
+Pymodbus
+> Pymodbus is een Modbus-protocolimplementatie die gebruik maakt van twisted voor zijn asynchrone communicatiekern.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
