@@ -1,5 +1,7 @@
 # Schneider M241 #
 
+<style>td {min-width: 130px;}</style>
+
 ![Schneider Modicon M241](./assets/Modicon_M241.jpg)
 
 Project door: Matti Bijnens, Remco Hofman, Stan van Wieringen
@@ -55,6 +57,7 @@ Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en S
 - Tools
 - Bijlagen
   - CookieCruncher-reloaded
+  - Trello
 
 <!-- tocstop -->
 
@@ -191,7 +194,7 @@ Nadien hebben we deze DLL's allemaal laten decompileren door DotPeek. Zoals te v
 
 ![Decompiled DLL List](./assets/dll_decompiled_list.png)
 
-Het navigeren door de code is wel veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. 
+Het navigeren door de code is wel veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -199,7 +202,7 @@ Het navigeren door de code is wel veel handiger / sneller als je gewoon kunt doo
 ## Action log ##
 
 | datum            | log                                    |
-| ---------------- | -------------------------------------- |
+|:---------------- |:-------------------------------------- |
 | 18 oktober 2018  | Alle benodigde software geïnstalleerd. |
 | 25 oktober 2018  | Licentie in orde gebracht en connectie gemaakt met de PLC. |
 | 5 november 2018  | Voormiddag software & firmware updates laten runnen. De al reeds gevonden vulnerabilities uitgetest op de webinterface van de PLC. Logs kunnen bekeken worden zonder authenticatie.|
