@@ -49,7 +49,7 @@ Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en S
     - Ping command
     - Discovery protocol
     - Start/stop command
-  - modbus
+  - Modbus
 - Decompile
 - Action log
 - Besluit
@@ -278,7 +278,7 @@ data = bytearray([
 
 ...
 
-### modbus ###
+### Modbus ###
 
 We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, the docs noted that the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget.
 Fortunately the device does support write_coils(15). We wrote a script that flashes the output leds one by one.
@@ -350,8 +350,8 @@ Het navigeren door de code is wel veel handiger / sneller als je gewoon kunt doo
 | 22 november 2018 | De hele dag proberen een replay attack te creëren van het stop-commando. |
 | 29 november 2018 | Gelukt om de lampjes aan te spreken via Modbus. Werkt enkel als de PLC in "stop-mode" staat, niet in "run-mode". |
 | 06 december 2018 | Op de web interface zagen we dat de configuratie-bestanden plain javascript zijn. Er dus een mogelijkheid tot een cross site scripting attack. |
-| 13 december 2018 | Alle documentatie en notities verzameld om later te verwerken naar de finale documentatie.|
-| 17 december 2018 | |
+| 13 december 2018 | Alle documentatie en notities verzameld om later te verwerken naar de finale documentatie. |
+| 17 december 2018 | We hebben doorgewerkt aan de finale documentatie. |
 | 18 december 2018 | |
 | 19 december 2018 | |
 | 20 december 2018 | |
