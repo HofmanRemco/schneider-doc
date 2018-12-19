@@ -27,6 +27,9 @@ Dit document is geschreven in markdown.
 
 Matti Bijnens, Remco Hofman, Stan van Wieringen
 
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
 ## Samenvatting ##
 
 We hebben onderzoek gedaan naar vulnerabilities in de Schneider Modicon M241 software. Alles wat te maken heeft met het flashen, programeren en commands sturen naar de PLC via de "SoMachine" software.
@@ -135,7 +138,7 @@ Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lect
 In de officiële software van Schneider zit een functie om PLC's te identificeren door hun leds te laten knipperen.  
 Dit werkt door een pakketje te broadcasten naar het hele subnet, dus in de UDP data moet een stuk data zitten waarmee de PLC kan bepalen of het pakketje al dan niet voor hem bestemd is.  
 We hebben de data die naar onze PLC werd verstuurd opgevangen met Wireshark en via Scapy opnieuw verstuurd.  
-Er zit geen beschreming tegen replay attacks op deze functie, waardoor men de PLC continu kan laten knipperen.
+Er zit geen bescherming tegen replay attacks op deze functie, waardoor men de PLC continu kan laten knipperen.
 
 ``` python
 from scapy.all import *
@@ -330,7 +333,7 @@ Hierdoor is het een hele opgave om tot de kern van een functie te komen. Een aan
 <!-- break -->
 <div style="page-break-after: always;"></div>
 
-Eens een DLL is ingeladen en volledig gedcompileerd is, kon je doormiddel van een CTRL + Click steeds verdergaan in de code. Totdat je weer op een niet-ingeladen DLL stuit. Om dit probleem te verhelpen hebben we doormiddel van een script alle DLL's verzameld in 1 enkele map.
+Eens een DLL is ingeladen en volledig gedecompileerd is, kon je doormiddel van een CTRL + Click steeds verdergaan in de code. Totdat je weer op een niet-ingeladen DLL stuit. Om dit probleem te verhelpen hebben we doormiddel van een script alle DLL's verzameld in 1 enkele map.
 
 ``` bash
 find . -name '*.dll' -exec cp {} /home/matti/dlls \;
