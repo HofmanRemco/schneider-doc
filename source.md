@@ -43,8 +43,8 @@ Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en S
 
 <!-- toc -->
 
-- Verklarende woordenlijst
 - Intro
+- Verklarende woordenlijst
 - Technische details
 - Verderzetting onderzoek vorig jaar
 - Protocol
@@ -67,6 +67,16 @@ Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en S
 <!-- break -->
 <div style="page-break-after: always;"></div>
 
+## Intro ##
+
+Het ontwerpen en schrijven in Schneider's SoMachine software voor de besturing van industriële machines en installaties is goed en wel maar heeft dit security risico's? Deze beveiliging kan van levensbelang zijn. Als hackers bijvoorbeeld het stop-commando kunnen nabootsen, dan zou de werkvloer stilgelegd kunnen worden.
+
+Wij hebben de opdracht gekregen om onderzoek te doen op deze software waarmee de PLC geprogrammeerd wordt.
+We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen maanden dit zitten onderzoeken.
+
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
 ## Verklarende woordenlijst ##
 
 | woord         | betekenis |
@@ -75,13 +85,6 @@ Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en S
 | SoMachine | |
 | Replay attack | Een replay-aanval (ook bekend als afspeelaanval) is een vorm van netwerkaanval waarbij een geldige gegevensoverdracht kwaadwillig of frauduleus wordt herhaald of vertraagd. |
 | Cross site scripting attack | |
-
-## Intro ##
-
-Het ontwerpen en schrijven in Schneider's SoMachine software voor de besturing van industriële machines en installaties is goed en wel maar heeft dit security risico's? Deze beveiliging kan van levensbelang zijn. Als hackers bijvoorbeeld het stop-commando kunnen nabootsen, dan zou de werkvloer stilgelegd kunnen worden.
-
-Wij hebben de opdracht gekregen om onderzoek te doen op deze software waarmee de PLC geprogrammeerd wordt.
-We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen maanden dit zitten onderzoeken.
 
 ## Technische details ##
 
@@ -167,10 +170,6 @@ Indien dit zou lukken zou een aanvaller identificatie van een PLC op de producti
 
 Ook discovery werkt via een broadcast, de software stuurt een pakket met volgende UDP data als payload:
 
-//TODO: betere commentaar en een beetje structuur.
-
-Request:
-
 ``` python
 original = bytearray([
     0xba, 0xf3, 0x5b, 0x2f, 0x7e, 0x03, 0x75, 0x7d,
@@ -213,7 +212,7 @@ modified = bytearray([
 
 Het script dat we hebben gebruikt om te fuzzen is te vinden in bijlage en op Github.
 
-Antwoord:  
+//TODO: antwoord bespreken, + PLC faker.
 
 ``` python
 # 1h28m04s
