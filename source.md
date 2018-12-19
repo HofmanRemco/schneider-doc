@@ -119,7 +119,7 @@ $(wget -qO- ${1}/usr/Syslog/PlcLog.txt\
 | cut -d',' -f1)"
 ```
 
-Als uitbreiding schreven we ook een Python script om cross-platform te werken. U kan deze code vinden in de bijlagen, gezien de grotere omvang van deze file. Uiteraard is ze ook beschikbaar via github.
+Als uitbreiding schreven we ook een Python script om cross-platform te werken. U kan deze code vinden in de bijlagen, gezien de grotere omvang van deze file. Uiteraard is het ook beschikbaar via Github.
 
 Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lector, Tijl Deneut, uiteindelijk gepubliceerd. Ook zijn exploit maakt gebruik van de publiek leesbare logfiles om de sessiecookie te berekenen.
 
@@ -162,7 +162,7 @@ Indien dit zou lukken zou een aanvaller identificatie van een PLC op de producti
 
 #### Discovery protocol ####
 
-Dit is een broadcast, waarop de gevonden plc antwoord met zijn gegevens.
+Ook discovery werkt via een broadcast, de software stuurt een pakket met volgende UDP data als payload:
 
 //TODO: betere commentaar en een beetje structuur.
 
@@ -170,43 +170,45 @@ Request:
 
 ``` python
 original = bytearray([
-    0xba, 0xf3, 0x5b, 0x2f,
-    0x7e, 0x03, 0x75, 0x7d,
+    0xba, 0xf3, 0x5b, 0x2f, 0x7e, 0x03, 0x75, 0x7d,
     0x6f, 0x0f, 0x29, 0x53,
     0x33,
     0b00100111,
     0xc6,
     0x37,
-    0x72, 0x6d, 0x9f, 0x33,
-    0x6a, 0x75, 0x76, 0x6c,
+    0x72, 0x6d, 0x9f, 0x33, 0x6a, 0x75, 0x76, 0x6c,
     0xf9,
     0b10001000,
     0x50,
     0x40,
     0x80, 0x72, 0x61, 0x66,
-    0xf6, 0x73, 0x2a, 0xdc,
-    0x53
+    0xf6, 0x73, 0x2a, 0xdc, 0x53
 ])
+```
 
+Door te fuzzen hebben we een tweede payload kunnen maken waarop de PLC ook antwoord.  
+De 14<sup>de</sup> en 26<sup>ste</sup>  bytes hebben hier beide een bitflip gekregen op hun 3<sup>de</sup>  bit, dus er lijkt een xor-gebaseerde checksum in het protocol te zitten.  
+Het is niet duidelijk of er in de PLC intern een verschil word gemaakt omdat we niet weten wat deze bytes juist betekenen.
+
+``` python
 modified = bytearray([
-    0xba, 0xf3, 0x5b, 0x2f,
-    0x7e, 0x03, 0x75, 0x7d,
+    0xba, 0xf3, 0x5b, 0x2f, 0x7e, 0x03, 0x75, 0x7d,
     0x6f, 0x0f, 0x29, 0x53,
     0x33,
-    0b00000111,  # why does this work?
+    0b00000111,  # Why does this work?
     0xc6,
     0x37,
-    0x72, 0x6d, 0x9f, 0x33,
-    0x6a, 0x75, 0x76, 0x6c,
+    0x72, 0x6d, 0x9f, 0x33, 0x6a, 0x75, 0x76, 0x6c,
     0xf9,
-    0b10101000,  # why does this work?
+    0b10101000,  # Why does this work?
     0x50,
     0x40,
     0x80, 0x72, 0x61, 0x66,
-    0xf6, 0x73, 0x2a, 0xdc,
-    0x53
+    0xf6, 0x73, 0x2a, 0xdc, 0x53
 ])
 ```
+
+Het script dat we hebben gebruikt om te fuzzen is te vinden in bijlage en op Github.
 
 Antwoord:  
 
