@@ -319,7 +319,7 @@ while True:
 <!-- break -->
 <div style="page-break-after: always;"></div>
 
-## Decompile ##
+## Decompilatie ##
 
 We kwamen er al redelijk snel achter dat de SoMachine software suite in .NET geschreven was.
 Dankzij DotPeek (JetBrains) konden we op een zeer overzichtelijke manier naar de source code kijken.
@@ -342,7 +342,9 @@ Nadien hebben we deze DLL's allemaal laten decompileren door DotPeek. Zoals te v
 
 ![Decompiled DLL List](./assets/dll_decompiled_list.png)
 
-Het navigeren door de code is wel veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben.
+Het navigeren door de code is wel veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. Zo waren we specifiek opzoek naar de code die de UDP/TCP packets opbouwt. Dit zou ons veel hebben geholpen bij het reversen van het protocol.
+
+Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd aan besteed. Spijtig genoeg is het zeer tijdrovend om door code te gaan. 
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
