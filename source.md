@@ -312,7 +312,7 @@ Nadien hebben we deze DLL's allemaal laten decompileren door DotPeek. Zoals te v
 
 Het navigeren door de code is wel veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. Zo waren we specifiek opzoek naar de code die de UDP/TCP packets opbouwt. Dit zou ons veel hebben geholpen bij het reversen van het protocol.
 
-Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd aan besteed. Spijtig genoeg is het zeer tijdrovend om door code te gaan. 
+Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd aan besteed. Spijtig genoeg is het zeer tijdrovend om door code te gaan.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -338,9 +338,18 @@ Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd 
 | 20 december 2018 | |
 | 21 december 2018 | |
 
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
 ## Besluit ##
 
-...
+Als we terugkijken op de afgelopen weken kunnen we besluiten dat teamwerk tussen ons in orde was. Helaas hadden we teveel hooi op onze vork genomen. Ons eerste probleem was dat onze licentie niet aanvaard werd. Gelukkig had mijnheer Deneut dit snel opgelost (nogmaals bedankt hiervoor).
+
+We begonnen met volle moed aan de reverse engineren van de protocollen maar stuitten op enorm veel struikelblokken. Het grootste obstakel was dat de PLC maar een response pakketje stuurt om de tien seconden.
+
+-> Deze PLC ontbreekt een hele hoop beveiligings maatregelingen.
+
+-> We raden aan om de PLC enkel te gebruiken in een gesloten omgeving.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
