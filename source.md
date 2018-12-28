@@ -51,7 +51,6 @@ Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en S
   - Schneider Protocol
     - Ping command
     - Discovery protocol
-    - Start/stop command
   - Modbus
 - Decompilatie
 - Action log
@@ -63,8 +62,8 @@ Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en S
 - Bronnen
 - Tools
 - Bijlagen
-  - CookieCruncher-reloaded
   - Trello
+  - CookieCruncher-reloaded
 
 <!-- tocstop -->
 
@@ -431,6 +430,13 @@ Pymodbus
 
 ## Bijlagen ##
 
+### Trello ###
+
+![Trello board](./assets/trello.png)
+
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
 ### CookieCruncher-reloaded ###
 
 ``` python
@@ -482,7 +488,3 @@ def main():
 if __name__ == '__main__':
     main()
 ```
-
-### Trello ###
-
-plz add snip
