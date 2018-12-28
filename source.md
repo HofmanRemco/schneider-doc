@@ -53,9 +53,13 @@ Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en S
     - Discovery protocol
     - Start/stop command
   - Modbus
-- Decompile
+- Decompilatie
 - Action log
 - Besluit
+- Reflectie
+  - Stan van Wieringen
+  - Matti Bijnens
+  - Remco Hofman
 - Bronnen
 - Tools
 - Bijlagen
@@ -371,7 +375,11 @@ Ik was zeer tevreden met de taakverdeling en het werken in team. Ik had vooral m
 
 ### Remco Hofman ###
 
-@Remco plz add =)
+We hebben dit project misschien te veel als 'hobbyproject' opgenomen in plaats van professioneel.
+
+De hoeveelheid werk die we er hebben in gestop komt niet overeen met wat er is uitgekomen, waarschijnlijk omdat we niet echt thuis waren in de wereld van PLC's en netwerkprotocol analyse.
+
+Gelukkig hebben we uit dit project wel genoeg bijgeleerd, maar op vlak van projectmanagement zijn we niet de efficiëntsten geweest.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
