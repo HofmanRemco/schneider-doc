@@ -210,10 +210,11 @@ modified = bytearray([
 ])
 ```
 
-Het script dat we hebben gebruikt om te fuzzen is te vinden in bijlage en op Github.
+Het script dat we hebben gebruikt om te fuzzen is te vinden in bijlage en op Github.  
+Indien er verder onderzoek op deze PLC gebeurt raden we aan om te zoeken naar de checksum die aanwezig moet zijn, de afstand van 96 lijkt niet willekeurig te zijn.
 
 De PLC antwoord met uitgebreide informatie:  
-Type, project, IP, uitbreidingsmodule, tijd sinds opstarten, firmwareversie en naam.
+Model, projectnaam, IP, eventuele uitbreidingsmodule, tijd sinds opstarten, firmwareversie en naam.
 
 Het is mogelijk om deze informatie opnieuw te versturen, en zo een 'ghost PLC' aan te maken.
 
@@ -252,6 +253,11 @@ data = bytearray([
     0x7d, 0x6c
 ])
 ```
+
+We hebben geprobeerd om deze informatie te manipuleren, maar dat is helaas niet gelukt.
+Opvallend is dat op korte termijn slechts enkele bytes van waarde wisselden, maar op langere termijn de meeste bytes veranderden.
+Mogelijk is een vorm van encryptie hier voor verantwoordelijk, maar dan moet de sleutel te vinden zijn in hetzelfde pakketje.
+Indien we meer succes behaalden met het decompileren en onderzoeken van de officiële software waren we hier mogelijk iets wijzer in geworden.
 
 #### Start/stop command ####
 
