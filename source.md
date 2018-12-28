@@ -263,10 +263,6 @@ Opvallend is dat op korte termijn slechts enkele bytes van waarde wisselden, maa
 Mogelijk is een vorm van encryptie hier voor verantwoordelijk, maar dan moet de sleutel te vinden zijn in hetzelfde pakketje.
 Indien we meer succes behaalden met het decompileren en onderzoeken van de officiële software waren we hier mogelijk iets wijzer in geworden.
 
-#### Start/stop command ####
-
-...
-
 ### Modbus ###
 
 We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, the docs noted that the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget.
