@@ -4,6 +4,8 @@
 
 ![Schneider Modicon M241](./assets/Modicon_M241.jpg)
 
+<div style="padding-top: 5cm;"></div>
+
 Project door: Matti Bijnens, Remco Hofman, Stan van Wieringen
 
 |                   |                                                 |
