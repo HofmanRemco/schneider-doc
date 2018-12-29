@@ -74,10 +74,10 @@ Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en S
 
 ## Intro ##
 
-Het ontwerpen en schrijven in Schneider's SoMachine software voor de besturing van industriële machines en installaties is goed en wel maar heeft dit security risico's? Deze beveiliging kan van levensbelang zijn. Als hackers bijvoorbeeld het stop-commando kunnen nabootsen, dan zou de werkvloer stilgelegd kunnen worden.
+Het ontwerpen en schrijven in Schneider's SoMachine software voor de besturing van industriële machines en installaties is goed en wel, maar heeft dit security risico's? De beveiliging van deze functies kan van levensbelang zijn. Als hackers bijvoorbeeld het stop-commando kunnen nabootsen, dan zou de productie stilgelegd kunnen worden.
 
-Wij hebben de opdracht gekregen om onderzoek te doen op deze software waarmee de PLC geprogrammeerd wordt.
-We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen maanden dit zitten onderzoeken.
+Wij hebben de opdracht gekregen om onderzoek te doen op de software waarmee deze PLC geprogrammeerd wordt.
+We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen maanden gespendeerd aan onderzoek op deze PLC.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -87,9 +87,9 @@ We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen ma
 | woord         | betekenis |
 | ------------- | --------- |
 | PLC           | Een programmable logic controller is een elektronisch apparaat met een microprocessor. In de industrie worden machines over het algemeen hiermee aangestuurd. Daarom zijn ze een belangrijk onderdeel in de automatisering.|
-| SoMachine | |
+| SoMachine | De software-suite gebruikt voor het beheren / programmeren van Schneider PLCs |
 | Replay attack | Een replay-aanval (ook bekend als afspeelaanval) is een vorm van netwerkaanval waarbij een geldige gegevensoverdracht kwaadwillig of frauduleus wordt herhaald of vertraagd. |
-| Cross site scripting attack | |
+| Cross site scripting attack | Een aanval waarbij we browser-code injecteren in een slachtoffer zijn browser. |
 
 ## Technische details ##
 
@@ -113,7 +113,7 @@ We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen ma
 Vorig jaar werd een fout gevonden in de generatie van de sessiecookie.
 In hun exploit werd gesteund op het feit dat via SNMP de opstarttijd van de PLC kon worden opgevraagd, echter hadden ze ze daar een tiental requests voor nodig omdat die tijd niet accuraat was.
 
-Vroeg in het bekijken van de web-interface van de M241 ontdekten we dat de logfiles onbeschermd waren en dat hierin WEL het exacte tijdstip in stond.
+Vroeg in het bekijken van de web-interface van de M241 ontdekten we dat de logfiles onbeschermd waren en dat hierin het exacte tijdstip in stond.
 
 Als POC schreven we snel een kort shellscript om deze fout uit te buiten.
 
@@ -132,7 +132,7 @@ $(wget -qO- ${1}/usr/Syslog/PlcLog.txt\
 
 Als uitbreiding schreven we ook een Python script om cross-platform te werken. U kan deze code vinden in de bijlagen, gezien de grotere omvang van deze file. Uiteraard is het ook beschikbaar via Github.
 
-Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lector, Tijl Deneut, uiteindelijk gepubliceerd. Ook zijn exploit maakt gebruik van de publiek leesbare logfiles om de sessiecookie te berekenen.
+Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lector, Tijl Deneut, gepubliceerd. Ook zijn exploit maakt gebruik van de publiek leesbare logfiles om de sessiecookie te berekenen.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -218,7 +218,7 @@ modified = bytearray([
 Het script dat we hebben gebruikt om te fuzzen is te vinden in bijlage en op Github.  
 Indien er verder onderzoek op deze PLC gebeurt raden we aan om te zoeken naar de checksum die aanwezig moet zijn, de afstand van 96 lijkt niet willekeurig te zijn.
 
-De PLC antwoord met uitgebreide informatie:  
+De PLC antwoordt met uitgebreide informatie:  
 Model, projectnaam, IP, eventuele uitbreidingsmodule, tijd sinds opstarten, firmwareversie en naam.
 
 Het is mogelijk om deze informatie opnieuw te versturen, en zo een 'ghost PLC' aan te maken.
@@ -317,9 +317,9 @@ Nadien hebben we deze DLL's allemaal laten decompileren door DotPeek. Zoals te v
 
 ![Decompiled DLL List](./assets/dll_decompiled_list.png)
 
-Het navigeren door de code is wel veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. Zo waren we specifiek opzoek naar de code die de UDP/TCP packets opbouwt. Dit zou ons veel hebben geholpen bij het reversen van het protocol.
+Het navigeren door de code is veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. Zo waren we specifiek opzoek naar de code die de UDP/TCP packets opbouwt. Dit zou ons veel hebben geholpen bij het reversen van het protocol.
 
-Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd aan besteed. Spijtig genoeg is het zeer tijdrovend om door code te gaan.
+Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd aan besteed. Spijtig genoeg was het te tijdrovend om door code te gaan.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -349,9 +349,9 @@ Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd 
 
 ## Besluit ##
 
-Als we terugkijken op de afgelopen weken kunnen we besluiten dat teamwerk tussen ons in orde was. Helaas hadden we teveel hooi op onze vork genomen. Ons eerste probleem dat we tegenkwamen was dat onze licentie niet aanvaard werd. Gelukkig werd dit probleem vlug opgelost door mijnheer Deneut (nogmaals bedankt hiervoor).
+Als we terugkijken op de afgelopen weken kunnen we besluiten dat het teamwerk tussen ons in orde was. Helaas hadden we teveel hooi op onze vork genomen. Ons eerste probleem dat we tegenkwamen was dat onze licentie niet aanvaard werd. Gelukkig werd dit probleem vlug opgelost door meneer Deneut (nogmaals bedankt hiervoor).
 
-We begonnen met volle moed aan de reverse engineren van de protocollen maar stuitten op enorm veel struikelblokken. Het grootste obstakel was dat de PLC enkel een response pakketje stuurt om de tien seconden. Hierdoor verliep testen zeer traag.
+We begonnen met volle moed aan het reverse engineren van de protocollen maar stuitten op enorm veel struikelblokken. Het grootste obstakel was dat de PLC enkel een response pakketje stuurt om de tien seconden. Hierdoor verliep testen zeer traag.
 
 We kunnen met zekerheid besluiten dat deze PLC een hele hoop beveiligings maatregelingen ontbreekt. We raden dan ook aan het netwerk waar de PLC zich in bevindt goed te beveiligen.
 
