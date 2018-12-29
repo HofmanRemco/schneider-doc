@@ -266,8 +266,7 @@ Indien we meer succes behaalden met het decompileren en onderzoeken van de offic
 
 ### Modbus ###
 
-We found some weird behaviour when sending modbus commands to the PLC. The device only executes modbus commands when in **STOP mode**. Besides that, the docs noted that the device does not support the write_coil function (5). This meant we couldn't use tools like mbtget.
-Fortunately the device does support write_coils(15). We wrote a script that flashes the output leds one by one.
+Bij het versturen van modbus commandos naar de PLC ontdekte we vreemd gedrag. Blijkbaar voert de PLC enkel modbus commandos uit als het in  **STOP mode** is. Daarnaast bleek uit de documentatie dat de PLC de write_coil function (5) niet ondersteund. Dit betekende dat we vele tools zoals mbtget niet konden gebruiken. Gelukkig ondersteund de PLC de write_coils(15) functie wel. We hebben een kort scriptje geschreven dat de lampjes rij per rij laat flikkeren.
 
 ``` python
 from pymodbus.client.sync import ModbusTcpClient
