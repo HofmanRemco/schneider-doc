@@ -368,7 +368,11 @@ Ik was zeer tevreden met de taakverdeling en het werken in team. Ik had vooral m
 
 ### Matti Bijnens ###
 
-@Matti plz add =)
+Ik ben pas in het midden van het project erbij gekomen. Voordien had ik aan een andere PLC gewerkt, maar door langdurige afwezigheid van mijn voormalige partner had ik besloten om mij bij deze groep aan te sluiten.
+
+Ik had gekozen voor een project met een PLC omdat ik er nog geen kennis over had. Het leek me de perfecte opportuniteit om iets bij te leren. Helaas bleek het moeilijker dan verwacht om alles rond PLC's te verkennen. Voordien hadden we nog geen kennis over PLC's, we wisten nog niets over het programmeren ervan, de protocollen en uiteraard de beveiligings fouten.
+
+Gelukkig kan ik op het einde van het project zeggen dat we enorm veel hebben bijgeleerd. Hoewel we niet echt nieuwe fouten hebben gevonden, vind ik dat we trots kunnen zijn op wat we hebben geprobeerd. 
 
 ### Remco Hofman ###
 
