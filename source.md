@@ -145,7 +145,7 @@ Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lect
 #### Ping command ####
 
 In de officiële software van Schneider zit een functie om PLC's te identificeren door hun leds te laten knipperen.
-Dit werkt door een pakketje te broadcasten naar het hele subnet.Hiervoor moet in de UDP data een stuk data zitten waarmee de PLC kan bepalen of het pakketje al dan niet voor hem bestemd is.
+Dit werkt door een pakketje te broadcasten naar het hele subnet. Hiervoor moet in de UDP data een stuk data zitten waarmee de PLC kan bepalen of het pakketje al dan niet voor hem bestemd is.
 We hebben de data die naar onze PLC werd verstuurd opgevangen met Wireshark en via Scapy opnieuw verstuurd.  
 Er zit geen bescherming tegen replay attacks op deze functie, waardoor men de PLC continu kan laten knipperen.
 
