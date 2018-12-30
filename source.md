@@ -352,7 +352,7 @@ Als we terugkijken op de afgelopen weken kunnen we besluiten dat het teamwerk tu
 
 We begonnen met volle moed aan het reverse engineren van de protocollen maar stuitten op enorm veel struikelblokken. Het grootste obstakel was dat de PLC enkel een response pakketje stuurt om de tien seconden. Hierdoor verliep testen zeer traag.
 
-We kunnen met zekerheid besluiten dat deze PLC een hele hoop beveiligingsmaatregelen ontbreekt. Zo wordt modbus ondersteund, vinden we geen HTTPS beveiliging terug en is er een ernstige session-hijacking vulnerability in de web interface. We raden dan ook aan het netwerk waar de PLC zich in bevindt goed te beveiligen. Het netwerk waarin de PLC zich bevindt wordt best volledig afgesplits van netwerken waarop gebruikersverkeer plaatsvindt. 
+We kunnen met zekerheid besluiten dat deze PLC een hele hoop beveiligingsmaatregelen ontbreekt. Zo wordt modbus ondersteund en is er een ernstige session-hijacking vulnerability in de web interface. We raden dan ook aan het netwerk waar de PLC zich in bevindt goed te beveiligen. Het netwerk waarin de PLC zich bevindt wordt best volledig afgesplits van netwerken waarop gebruikersverkeer plaatsvindt. 
 
 Daarnaast is het sterk afgeraden om eender welke PLC te verbinden met het internet. Protocollen als modbus ondersteunen geen authenticatie en kunnen dus door eender wie worden bestuurdt.
 
