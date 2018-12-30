@@ -36,7 +36,7 @@ Matti Bijnens, Remco Hofman, Stan van Wieringen
 
 Dit onderzoek beschrijft het zoeken en vinden van vulnerabilities in de Schneider Modicon M241 software. Meer specifiek gericht op zwakheden bij het flashen, programmeren en het sturen van commands naar de PLC via de "SoMachine" software.
 
-Daarnaast is met behulp van Wireshark de communicatie tussen de PLC en SoMachine onderschept en zijn pogingen gedaan om het protocol te analyseren. Uiteindelijk was een van de conclusies dat er meerdere PLC's nodig zijn om hierin verder te geraken. 
+Daarnaast is met behulp van Wireshark de communicatie tussen de PLC en SoMachine onderschept en zijn pogingen gedaan om het protocol te analyseren. Uiteindelijk was een van de conclusies dat er meerdere PLC's nodig zijn om hierin verder te geraken.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -45,7 +45,7 @@ Daarnaast is met behulp van Wireshark de communicatie tussen de PLC en SoMachine
 
 <!-- toc -->
 
-- Intro
+- Introductie
 - Verklarende woordenlijst
 - Technische details
 - Verderzetting onderzoek vorig jaar
@@ -72,7 +72,7 @@ Daarnaast is met behulp van Wireshark de communicatie tussen de PLC en SoMachine
 <!-- break -->
 <div style="page-break-after: always;"></div>
 
-## Intro ##
+## Introductie ##
 
 Het ontwerpen en schrijven in Schneider's SoMachine software voor de besturing van industriële machines en installaties is goed en wel, maar heeft dit security risico's? De beveiliging van deze functies kan van levensbelang zijn. Als hackers bijvoorbeeld het stop-commando kunnen nabootsen, dan zou de productie stilgelegd kunnen worden.
 
@@ -111,9 +111,9 @@ We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen ma
 ## Verderzetting onderzoek vorig jaar ##
 
 Vorig jaar werd een fout gevonden in de generatie van de sessiecookie.
-In hun exploit werd gesteund op het feit dat via SNMP de opstarttijd van de PLC kon worden opgevraagd, echter hadden ze ze daar een tiental requests voor nodig omdat die tijd niet accuraat was.
+In hun exploit werd gesteund op het feit dat via SNMP de opstarttijd van de PLC kon worden opgevraagd, echter hadden ze  daar een tiental requests voor nodig omdat die tijd niet accuraat was.
 
-Vroeg in het bekijken van de web-interface van de M241 ontdekten we dat de logfiles onbeschermd waren en dat hierin het exacte tijdstip in stond.
+Vroeg in het bekijken van de web-interface van de M241 ontdekten we dat de logfiles onbeschermd waren en dat hier het exacte tijdstip in vermeld stond.
 
 Als POC schreven we snel een kort shellscript om deze fout uit te buiten.
 
@@ -143,8 +143,8 @@ Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lect
 
 #### Ping command ####
 
-In de officiële software van Schneider zit een functie om PLC's te identificeren door hun leds te laten knipperen.  
-Dit werkt door een pakketje te broadcasten naar het hele subnet, dus in de UDP data moet een stuk data zitten waarmee de PLC kan bepalen of het pakketje al dan niet voor hem bestemd is.  
+In de officiële software van Schneider zit een functie om PLC's te identificeren door hun leds te laten knipperen.
+Dit werkt door een pakketje te broadcasten naar het hele subnet.Hiervoor moet in de UDP data een stuk data zitten waarmee de PLC kan bepalen of het pakketje al dan niet voor hem bestemd is.
 We hebben de data die naar onze PLC werd verstuurd opgevangen met Wireshark en via Scapy opnieuw verstuurd.  
 Er zit geen bescherming tegen replay attacks op deze functie, waardoor men de PLC continu kan laten knipperen.
 
@@ -168,7 +168,7 @@ crafted = Ether(dst="ff:ff:ff:ff:ff:ff") /\
 sendp(crafted, iface='enp0s31f6')
 ```
 
-Helaas is het ons niet gelukt om te bepalen waar deze identifier juist zit in het pakket, noch om te bepalen waar deze juist word uitgestuurd door de PLC.  
+Helaas is het ons niet gelukt om te bepalen waar deze identifier juist zit in het pakket, noch om te bepalen waar deze juist wordt uitgestuurd door de PLC.  
 Indien dit zou lukken zou een aanvaller identificatie van een PLC op de productievloer zeer moeilijk kunnen maken.
 
 #### Discovery protocol ####
@@ -193,9 +193,9 @@ original = bytearray([
 ])
 ```
 
-Door te fuzzen hebben we een tweede payload kunnen maken waarop de PLC ook antwoord.  
-De 14<sup>de</sup> en 26<sup>ste</sup>  bytes hebben hier beide een bitflip gekregen op hun 3<sup>de</sup>  bit, dus er lijkt een xor-gebaseerde checksum in het protocol te zitten.  
-Het is niet duidelijk of er in de PLC intern een verschil word gemaakt omdat we niet weten wat deze bytes juist betekenen.
+Door te fuzzen hebben we een tweede payload kunnen maken waarop de PLC ook antwoordt.  
+De 14<sup>de</sup> en 26<sup>ste</sup>  bytes hebben hier beiden een bitflip gekregen op hun 3<sup>de</sup>  bit, dus er lijkt een xor-gebaseerde checksum in het protocol te zitten.  
+Het is niet duidelijk of er in de PLC intern een verschil wordt gemaakt omdat we niet weten wat deze bytes juist betekenen.
 
 ``` python
 modified = bytearray([
@@ -261,12 +261,12 @@ data = bytearray([
 
 We hebben geprobeerd om deze informatie te manipuleren, maar dat is helaas niet gelukt.
 Opvallend is dat op korte termijn slechts enkele bytes van waarde wisselden, maar op langere termijn de meeste bytes veranderden.
-Mogelijk is een vorm van encryptie hier voor verantwoordelijk, maar dan moet de sleutel te vinden zijn in hetzelfde pakketje.
+Mogelijk is een vorm van encryptie hier verantwoordelijk voor, maar dan moet de sleutel te vinden zijn in hetzelfde pakketje.
 Indien we meer succes behaalden met het decompileren en onderzoeken van de officiële software waren we hier mogelijk iets wijzer in geworden.
 
 ### Modbus ###
 
-Bij het versturen van modbus commandos naar de PLC ontdekte we vreemd gedrag. Blijkbaar voert de PLC enkel modbus commandos uit als het in  **STOP mode** is. Daarnaast bleek uit de documentatie dat de PLC de write_coil function (5) niet ondersteund. Dit betekende dat we vele tools zoals mbtget niet konden gebruiken. Gelukkig ondersteund de PLC de write_coils(15) functie wel. We hebben een kort scriptje geschreven dat de lampjes rij per rij laat flikkeren.
+Bij het versturen van modbus commandos naar de PLC ontdekte we vreemd gedrag. Blijkbaar voert de PLC enkel modbus commandos uit als het in  **STOP mode** is. Daarnaast bleek uit de documentatie dat de PLC de write_coil function (5) niet ondersteund. Dit betekende dat we vele tools zoals mbtget niet konden gebruiken. Gelukkig ondersteunt de PLC de write_coils(15) functie wel. We hebben een kort scriptje geschreven dat de lampjes rij per rij laat flikkeren.
 
 ``` python
 from pymodbus.client.sync import ModbusTcpClient
@@ -306,19 +306,19 @@ Hierdoor is het een hele opgave om tot de kern van een functie te komen. Een aan
 <!-- break -->
 <div style="page-break-after: always;"></div>
 
-Eens een DLL is ingeladen en volledig gedecompileerd is, kon je doormiddel van een CTRL + Click steeds verdergaan in de code. Totdat je weer op een niet-ingeladen DLL stuit. Om dit probleem te verhelpen hebben we doormiddel van een script alle DLL's verzameld in 1 enkele map.
+Eens een DLL is ingeladen en volledig gedecompileerd is, kan je door middel van een CTRL + Click steeds verdergaan in de code. Totdat je weer op een niet-ingeladen DLL stuit. Om dit probleem te verhelpen hebben we door middel van een script alle DLL's verzameld in 1 enkele map.
 
 ``` bash
 find . -name '*.dll' -exec cp {} /home/matti/dlls \;
 ```
 
-Nadien hebben we deze DLL's allemaal laten decompileren door DotPeek. Zoals te verwachten nam dit veel tijd in beslag.
+Nadien hebben we deze DLL's allemaal laten decompileren door DotPeek. Zoals te verwachten was, nam dit veel tijd in beslag.
 
 ![Decompiled DLL List](./assets/dll_decompiled_list.png)
 
-Het navigeren door de code is veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. Zo waren we specifiek opzoek naar de code die de UDP/TCP packets opbouwt. Dit zou ons veel hebben geholpen bij het reversen van het protocol.
+Het navigeren door de code is veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. Zo waren we specifiek op zoek naar de code die de UDP/TCP packets opbouwt. Dit zou ons veel hebben geholpen bij het reversen van het protocol.
 
-Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd aan besteed. Spijtig genoeg was het te tijdrovend om door code te gaan.
+Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd aan besteed. Spijtig genoeg was het te tijdrovend om door de code te gaan.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -352,9 +352,9 @@ Als we terugkijken op de afgelopen weken kunnen we besluiten dat het teamwerk tu
 
 We begonnen met volle moed aan het reverse engineren van de protocollen maar stuitten op enorm veel struikelblokken. Het grootste obstakel was dat de PLC enkel een response pakketje stuurt om de tien seconden. Hierdoor verliep testen zeer traag.
 
-We kunnen met zekerheid besluiten dat deze PLC een hele hoop beveiligingsmaatregelen ontbreekt. Zo wordt modbus ondersteund en is er een ernstige session-hijacking vulnerability in de web interface. We raden dan ook aan het netwerk waar de PLC zich in bevindt goed te beveiligen. Het netwerk waarin de PLC zich bevindt wordt best volledig afgesplits van netwerken waarop gebruikersverkeer plaatsvindt. 
+We kunnen met zekerheid besluiten dat deze PLC een hele hoop beveiligingsmaatregelen ontbreekt. Zo wordt modbus ondersteund en is er een ernstige session-hijacking vulnerability in de web interface. We raden dan ook aan het netwerk waar de PLC zich in bevindt goed te beveiligen. Het netwerk waarin de PLC zich bevindt wordt best volledig afgesplitst van netwerken waarop gebruikersverkeer plaatsvindt.
 
-Daarnaast is het sterk afgeraden om eender welke PLC te verbinden met het internet. Protocollen als modbus ondersteunen geen authenticatie en kunnen dus door eender wie worden bestuurdt.
+Daarnaast is het sterk afgeraden om eender welke PLC te verbinden met het internet. Protocollen als modbus ondersteunen geen authenticatie en kunnen dus door eender wie worden bestuurd.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -365,7 +365,7 @@ Daarnaast is het sterk afgeraden om eender welke PLC te verbinden met het intern
 
 We zijn het project gestart met veel motivatie. Aangezien we allemaal samen op hetzelfde kot zitten hadden we een goede werkplek om af te spreken. Na een aantal dagen met de PLC gewerkt te hebben zagen we dat dit project meer inspanning nodig had dan we op het eerste zicht dachten.
 
-Ik ben zeer tevreden met de taakverdeling en het werken in team. Het zoeken naar mogelijke vulnerabilities in de software bleek geen eenvoudige taak te zijn. Dit is in eerste instantie toch het startpunt voor de verdere stappen in het onderzoek naar de kritieke kwetsbaarheden in de PLC. Ook zou het ter beschikking hebben van een tweede PLC enorm geholpen hebben om unique identifiers te vergelijken.
+Ik ben zeer tevreden met de taakverdeling en het werken in team. Het zoeken naar mogelijke vulnerabilities in de software bleek echter geen eenvoudige taak te zijn. Dit is in eerste instantie toch het startpunt voor de verdere stappen in het onderzoek naar de kritieke kwetsbaarheden in de PLC. Ook zou het ter beschikking hebben van een tweede PLC enorm geholpen hebben om unique identifiers te vergelijken.
 
 ### Matti Bijnens ###
 
@@ -373,7 +373,7 @@ Ik ben pas in het midden van het project erbij gekomen. Voordien had ik aan een 
 
 Ik had gekozen voor een project met een PLC omdat ik er nog geen kennis over had. Het leek me de perfecte opportuniteit om iets bij te leren. Helaas bleek het moeilijker dan verwacht om alles rond PLC's te verkennen. Voordien hadden we nog geen kennis over PLC's, we wisten nog niets over het programmeren ervan, de protocollen en uiteraard de beveiligings fouten.
 
-Gelukkig kan ik op het einde van het project zeggen dat we enorm veel hebben bijgeleerd. Hoewel we niet echt nieuwe fouten hebben gevonden, vind ik dat we trots kunnen zijn op wat we hebben geprobeerd. 
+Gelukkig kan ik op het einde van het project zeggen dat we enorm veel hebben bijgeleerd. Hoewel we niet echt nieuwe fouten hebben gevonden, vind ik dat we trots kunnen zijn op wat we hebben geprobeerd.
 
 ### Remco Hofman ###
 
