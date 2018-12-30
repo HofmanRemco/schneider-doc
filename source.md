@@ -273,7 +273,7 @@ Indien we meer succes behaalden met het decompileren en onderzoeken van de offic
 
 ### Modbus ###
 
-Bij het versturen van modbus commandos naar de PLC ontdekte we vreemd gedrag. Blijkbaar voert de PLC enkel modbus commandos uit als het in  **STOP mode** is. Daarnaast bleek uit de documentatie dat de PLC de write_coil function (5) niet ondersteund. Dit betekende dat we vele tools zoals mbtget niet konden gebruiken. Gelukkig ondersteunt de PLC de write_coils(15) functie wel. We hebben een kort scriptje geschreven dat de lampjes rij per rij laat flikkeren.
+Bij het versturen van modbus commando's naar de PLC ontdekte we vreemd gedrag. Blijkbaar voert de PLC enkel modbus commando's uit als het in  **STOP mode** is. Daarnaast bleek uit de documentatie dat de PLC de write_coil function (5) niet ondersteund. Dit betekende dat we vele tools zoals mbtget niet konden gebruiken. Gelukkig ondersteunt de PLC de write_coils(15) functie wel. We hebben een kort scriptje geschreven dat de lampjes rij per rij laat flikkeren.
 
 ``` python
 from pymodbus.client.sync import ModbusTcpClient
@@ -323,7 +323,7 @@ Nadien hebben we deze DLL's allemaal laten decompileren door DotPeek. Zoals te v
 
 ![Decompiled DLL List](./assets/dll_decompiled_list.png)
 
-Het navigeren door de code is veel handiger / sneller als je gewoon kunt doorclicken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. Zo waren we specifiek op zoek naar de code die de UDP/TCP packets opbouwt. Dit zou ons veel hebben geholpen bij het reversen van het protocol.
+Het navigeren door de code is veel handiger / sneller als je gewoon kunt doorklikken. Helaas waren er nog steeds stukken code die we niet gevonden hebben. Zo waren we specifiek op zoek naar de code die de UDP/TCP packets opbouwt. Dit zou ons veel hebben geholpen bij het reversen van het protocol.
 
 Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd aan besteed. Spijtig genoeg was het te tijdrovend om door de code te gaan.
 
@@ -357,7 +357,7 @@ Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd 
 
 ## Besluit ##
 
-Als we terugkijken op de afgelopen weken kunnen we besluiten dat het teamwerk tussen ons in orde was. Helaas hadden we teveel hooi op onze vork genomen. Ons eerste probleem dat we tegenkwamen was dat onze licentie niet aanvaard werd. Gelukkig werd dit probleem vlug opgelost door meneer Deneut (nogmaals bedankt hiervoor).
+Als we terugkijken op de afgelopen weken kunnen we besluiten dat het teamwerk tussen ons in orde was. Helaas hadden we te veel hooi op onze vork genomen. Ons eerste probleem dat we tegenkwamen was dat onze licentie niet aanvaard werd. Gelukkig werd dit probleem vlug opgelost door meneer Deneut (nogmaals bedankt hiervoor).
 
 We begonnen met volle moed aan het reverse engineren van de protocollen maar stuitten op enorm veel struikelblokken. Het grootste obstakel was dat de PLC enkel een response pakketje stuurt om de tien seconden. Hierdoor verliep testen zeer traag.
 
