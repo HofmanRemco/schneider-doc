@@ -50,7 +50,7 @@ Daarnaast is met behulp van Wireshark de communicatie tussen de PLC en SoMachine
 - Technische details
 - Verderzetting onderzoek vorig jaar
 - Protocol
-  - Schneider Protocol
+  - SoMachine Protocol
     - Ping command
     - Discovery protocol
   - Modbus
@@ -58,9 +58,9 @@ Daarnaast is met behulp van Wireshark de communicatie tussen de PLC en SoMachine
 - Action log
 - Besluit
 - Reflectie
-  - Stan van Wieringen
   - Matti Bijnens
   - Remco Hofman
+  - Stan van Wieringen
 - Bronnen
 - Tools
 - Bijlagen
@@ -77,19 +77,20 @@ Daarnaast is met behulp van Wireshark de communicatie tussen de PLC en SoMachine
 Het ontwerpen en schrijven in Schneider's SoMachine software voor de besturing van industriële machines en installaties is goed en wel, maar heeft dit security risico's? De beveiliging van deze functies kan van levensbelang zijn. Als hackers bijvoorbeeld het stop-commando kunnen nabootsen, dan zou de productie stilgelegd kunnen worden.
 
 Wij hebben de opdracht gekregen om onderzoek te doen op de software waarmee deze PLC geprogrammeerd wordt.
-We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen maanden gespendeerd aan onderzoek op deze PLC.
+We hebben de Schneider Modicon M241 toegewezen gekregen en hebben de afgelopen maanden gespendeerd aan onderzoek op deze PLC.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
 
 ## Verklarende woordenlijst ##
 
-| woord         | betekenis |
-| ------------- | --------- |
-| PLC           | Een programmable logic controller is een elektronisch apparaat met een microprocessor. In de industrie worden machines over het algemeen hiermee aangestuurd. Daarom zijn ze een belangrijk onderdeel in de automatisering.|
-| SoMachine | De software-suite gebruikt voor het beheren / programmeren van Schneider PLCs |
-| Replay attack | Een replay-aanval (ook bekend als afspeelaanval) is een vorm van netwerkaanval waarbij een geldige gegevensoverdracht kwaadwillig of frauduleus wordt herhaald of vertraagd. |
+| woord                       | betekenis |
+|:--------------------------- | --------- |
 | Cross site scripting attack | Een aanval waarbij we browser-code injecteren in een slachtoffer zijn browser. |
+| PLC                         | Een programmable logic controller is een elektronisch apparaat met een microprocessor. In de industrie worden machines over het algemeen hiermee aangestuurd. Daarom zijn ze een belangrijk onderdeel in de automatisering.|
+| POC                         | Proof-of-Concept, een demonstratie van de geldigheid van een idee. |
+| Replay attack               | Een replay-aanval (ook bekend als afspeelaanval) is een vorm van netwerkaanval waarbij een geldige gegevensoverdracht kwaadwillig of frauduleus wordt herhaald of vertraagd. |
+| SoMachine                   | De software-suite gebruikt voor het beheren / programmeren van Schneider PLCs |
 
 ## Technische details ##
 
@@ -103,7 +104,7 @@ We hebben de Schneider Modicon 241 toegewezen gekregen en hebben de afgelopen ma
 - Standaard IP = 10.10.36.224
 - De laatste 2 nummers van het IP zijn de decimale waarde van de laatste 2 hex bytes van het MAC-adres.
 
-![Schneider protocol poorten](./assets/Schneider_protocol_poorten.png)
+![Schneider poorten](./assets/Schneider_protocol_poorten.png)
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -139,7 +140,7 @@ Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lect
 
 ## Protocol ##
 
-### Schneider Protocol ###
+### SoMachine Protocol ###
 
 #### Ping command ####
 
@@ -363,12 +364,6 @@ Daarnaast is het sterk afgeraden om eender welke PLC te verbinden met het intern
 
 ## Reflectie ##
 
-### Stan van Wieringen ###
-
-We zijn het project gestart met veel motivatie. Aangezien we allemaal samen op hetzelfde kot zitten hadden we een goede werkplek om af te spreken. Na een aantal dagen met de PLC gewerkt te hebben zagen we dat dit project meer inspanning nodig had dan we op het eerste zicht dachten.
-
-Ik ben zeer tevreden met de taakverdeling en het werken in team. Het zoeken naar mogelijke vulnerabilities in de software bleek echter geen eenvoudige taak te zijn. Dit is in eerste instantie toch het startpunt voor de verdere stappen in het onderzoek naar de kritieke kwetsbaarheden in de PLC. Ook zou het ter beschikking hebben van een tweede PLC enorm geholpen hebben om unique identifiers te vergelijken.
-
 ### Matti Bijnens ###
 
 Ik ben pas in het midden van het project erbij gekomen. Voordien had ik aan een andere PLC gewerkt, maar door langdurige afwezigheid van mijn voormalige partner had ik besloten om mij bij deze groep aan te sluiten.
@@ -384,6 +379,12 @@ We hebben dit project misschien te veel als 'hobbyproject' opgenomen in plaats v
 De hoeveelheid werk die we er hebben in gestopt komt niet overeen met wat er is uitgekomen, waarschijnlijk omdat we niet echt thuis waren in de wereld van PLC's en netwerkprotocol analyse.
 
 Gelukkig hebben we uit dit project wel genoeg bijgeleerd, maar op vlak van projectmanagement zijn we niet het meest efficiënt geweest.
+
+### Stan van Wieringen ###
+
+We zijn het project gestart met veel motivatie. Aangezien we allemaal samen op hetzelfde kot zitten hadden we een goede werkplek om af te spreken. Na een aantal dagen met de PLC gewerkt te hebben zagen we dat dit project meer inspanning nodig had dan we op het eerste zicht dachten.
+
+Ik ben zeer tevreden met de taakverdeling en het werken in team. Het zoeken naar mogelijke vulnerabilities in de software bleek echter geen eenvoudige taak te zijn. Dit is in eerste instantie toch het startpunt voor de verdere stappen in het onderzoek naar de kritieke kwetsbaarheden in de PLC. Ook zou het ter beschikking hebben van een tweede PLC enorm geholpen hebben om unique identifiers te vergelijken.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
