@@ -21,7 +21,7 @@ Project door: Matti Bijnens, Remco Hofman, Stan van Wieringen
 
 ## Woord vooraf ##
 
-Voor ons security-project onderzoek kregen we de kans om met echte industriële hardware te werken. Meer specifiek hebben wij gewerkt met de Schneider Modicon M241 en de bijbehorende software. Dit verslag is het resultaat van ons onderzoek en bevindingen.
+Voor dit security-project onderzoek kregen we de kans om met echte industriële hardware te werken. Meer specifiek hebben wij gewerkt met de Schneider Modicon M241 en de bijbehorende software. Dit verslag is het resultaat van ons onderzoek en bevindingen.
 
 Graag danken wij onze lectoren voor het mogelijk maken van dit onderzoek en het ter beschikking stellen van de nodige apparatuur.
 
@@ -34,9 +34,9 @@ Matti Bijnens, Remco Hofman, Stan van Wieringen
 
 ## Samenvatting ##
 
-We hebben onderzoek gedaan naar vulnerabilities in de Schneider Modicon M241 software. Alles wat te maken heeft met het flashen, programeren en commands sturen naar de PLC via de "SoMachine" software.
+Dit onderzoek beschrijft het zoeken en vinden van vulnerabilities in de Schneider Modicon M241 software. Meer specifiek gericht op zwakheden bij het flashen, programmeren en het sturen van commands naar de PLC via de "SoMachine" software.
 
-Hiernaast hebben wij met behulp van Wireshark de communicatie tussen de PLC en SoMachine onderschept en pogingen gedaan om het protocol te analyseren. We botsten tegen een muur toen we zagen dat we meerdere PLC's nodig hadden om hierin verder te geraken.
+Daarnaast is met behulp van Wireshark de communicatie tussen de PLC en SoMachine onderschept en zijn pogingen gedaan om het protocol te analyseren. Uiteindelijk was een van de conclusies dat er meerdere PLC's nodig zijn om hierin verder te geraken. 
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
@@ -363,9 +363,9 @@ Daarnaast is het sterk afgeraden om eender welke PLC te verbinden met het intern
 
 ### Stan van Wieringen ###
 
-Het project startte met veel motivatie. Aangezien dat we allemaal samen op kot zitten hadden we een goede werkplek om af te spreken. Na een aantal dagen met de PLC gewerkt te hebben zagen we dat dit project meer inspanning nodig had dan we op het eerste zicht dachten.
+We zijn het project gestart met veel motivatie. Aangezien we allemaal samen op hetzelfde kot zitten hadden we een goede werkplek om af te spreken. Na een aantal dagen met de PLC gewerkt te hebben zagen we dat dit project meer inspanning nodig had dan we op het eerste zicht dachten.
 
-Ik was zeer tevreden met de taakverdeling en het werken in team. Ik had vooral moeite met zoeken naar mogelijke vulnerabilities. Als het ware hopen dat je ergens op botst waar je dan verder in kan gaan.
+Ik ben zeer tevreden met de taakverdeling en het werken in team. Het zoeken naar mogelijke vulnerabilities in de software bleek geen eenvoudige taak te zijn. Dit is in eerste instantie toch het startpunt voor de verdere stappen in het onderzoek naar de kritieke kwetsbaarheden in de PLC. Ook zou het ter beschikking hebben van een tweede PLC enorm geholpen hebben om unique identifiers te vergelijken.
 
 ### Matti Bijnens ###
 
@@ -379,9 +379,9 @@ Gelukkig kan ik op het einde van het project zeggen dat we enorm veel hebben bij
 
 We hebben dit project misschien te veel als 'hobbyproject' opgenomen in plaats van professioneel.
 
-De hoeveelheid werk die we er hebben in gestop komt niet overeen met wat er is uitgekomen, waarschijnlijk omdat we niet echt thuis waren in de wereld van PLC's en netwerkprotocol analyse.
+De hoeveelheid werk die we er hebben in gestopt komt niet overeen met wat er is uitgekomen, waarschijnlijk omdat we niet echt thuis waren in de wereld van PLC's en netwerkprotocol analyse.
 
-Gelukkig hebben we uit dit project wel genoeg bijgeleerd, maar op vlak van projectmanagement zijn we niet de efficiëntsten geweest.
+Gelukkig hebben we uit dit project wel genoeg bijgeleerd, maar op vlak van projectmanagement zijn we niet het meest efficiënt geweest.
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
