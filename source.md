@@ -172,6 +172,9 @@ sendp(crafted, iface='enp0s31f6')
 Helaas is het ons niet gelukt om te bepalen waar deze identifier juist zit in het pakket, noch om te bepalen waar deze juist wordt uitgestuurd door de PLC.  
 Indien dit zou lukken zou een aanvaller identificatie van een PLC op de productievloer zeer moeilijk kunnen maken.
 
+<!-- break -->
+<div style="page-break-after: always;"></div>
+
 #### Discovery protocol ####
 
 Ook discovery werkt via een broadcast, de software stuurt een pakket met volgende UDP data als payload:
@@ -264,6 +267,9 @@ We hebben geprobeerd om deze informatie te manipuleren, maar dat is helaas niet 
 Opvallend is dat op korte termijn slechts enkele bytes van waarde wisselden, maar op langere termijn de meeste bytes veranderden.
 Mogelijk is een vorm van encryptie hier verantwoordelijk voor, maar dan moet de sleutel te vinden zijn in hetzelfde pakketje.
 Indien we meer succes behaalden met het decompileren en onderzoeken van de officiële software waren we hier mogelijk iets wijzer in geworden.
+
+<!-- break -->
+<div style="page-break-after: always;"></div>
 
 ### Modbus ###
 
