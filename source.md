@@ -25,7 +25,7 @@ Voor dit security-project onderzoek kregen we de kans om met echte industriële 
 
 Graag danken wij onze lectoren voor het mogelijk maken van dit onderzoek en het ter beschikking stellen van de nodige apparatuur.
 
-Dit document is geschreven in markdown.
+Dit document is geschreven in markdown, de broncode kan op github worden gevonden.
 
 Matti Bijnens, Remco Hofman, Stan van Wieringen
 
