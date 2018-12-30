@@ -131,7 +131,7 @@ $(wget -qO- ${1}/usr/Syslog/PlcLog.txt\
 | cut -d',' -f1)"
 ```
 
-Als uitbreiding schreven we ook een Python script om cross-platform te werken. U kan deze code vinden in de bijlagen, gezien de grotere omvang van deze file. Uiteraard is het ook beschikbaar via Github.
+Als uitbreiding schreven we ook een Python script om cross-platform te werken. U kan deze code vinden in de bijlagen, gezien de grotere omvang van deze file. Uiteraard is het ook beschikbaar via GitHub.
 
 Kort na het schrijven van deze scripts is op exploitdb een exploit van onze lector, Tijl Deneut, gepubliceerd. Ook zijn exploit maakt gebruik van de publiek leesbare logfiles om de sessiecookie te berekenen.
 
@@ -219,7 +219,7 @@ modified = bytearray([
 ])
 ```
 
-Het script dat we hebben gebruikt om te fuzzen is te vinden in bijlage en op Github.  
+Het script dat we hebben gebruikt om te fuzzen is te vinden in bijlage en op GitHub.  
 Indien er verder onderzoek op deze PLC gebeurt raden we aan om te zoeken naar de checksum die aanwezig moet zijn, de afstand van 96 lijkt niet willekeurig te zijn.
 
 De PLC antwoordt met uitgebreide informatie:  
