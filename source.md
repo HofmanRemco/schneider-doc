@@ -338,10 +338,12 @@ Indien we nog extra tijd hadden voor het project hadden we hier graag meer tijd 
 | 29 november 2018 | Gelukt om de lampjes aan te spreken via Modbus. Werkt enkel als de PLC in "stop-mode" staat, niet in "run-mode". |
 | 06 december 2018 | Op de web interface zagen we dat de configuratie-bestanden plain javascript zijn. Er dus een mogelijkheid tot een cross site scripting attack. |
 | 13 december 2018 | Alle documentatie en notities verzameld om later te verwerken naar de finale documentatie. |
-| 17 december 2018 |  |
-| 18 december 2018 | We hebben doorgewerkt aan de finale documentatie.|
-| 19 december 2018 | |
+| 17 december 2018 | Finale documentatie gestart |
+| 18 december 2018 | We hebben doorgewerkt aan de finale documentatie. |
+| 19 december 2018 | We hebben doorgewerkt aan de finale documentatie. |
 | 28 december 2018 | Eindverslag finaliseren. |
+| 29 december 2018 | Eindverslag finaliseren. |
+| 30 december 2018 | Eindverslag finaliseren. |
 
 <!-- break -->
 <div style="page-break-after: always;"></div>
